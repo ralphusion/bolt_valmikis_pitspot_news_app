@@ -6,6 +6,17 @@ import React, { useState, useEffect } from 'react';
       return `https://picsum.photos/id/${randomId}/800/500`;
     };
 
+    const formatDate = (dateString) => {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    };
+
     const App = () => {
       const [stories, setStories] = useState([]);
       const [loading, setLoading] = useState(true);
@@ -21,7 +32,8 @@ import React, { useState, useEffect } from 'react';
               content: item.description.replace(/<[^>]+>/g, ''),
               url: item.link,
               image: item.enclosure.link || getRandomPlaceholder(),
-              source: 'Motorsport.com'
+              source: 'Motorsport.com',
+              pubDate: item.pubDate
             }));
             setStories(sanitizedStories);
           } catch (error) {
@@ -71,16 +83,12 @@ import React, { useState, useEffect } from 'react';
                   </div>
                 ) : currentStory ? (
                   <div className="card">
-                    <button
-                      className="swipe-button left"
-                      onClick={() => handleSwipe('right')}
-                      disabled={currentIndex === 0}
-                    >
-                      ←
-                    </button>
                     <div className="content-container">
                       <div className="card-content">
                         <h2>{currentStory.title}</h2>
+                        <div className="card-meta">
+                          {formatDate(currentStory.pubDate)}
+                        </div>
                         <p>{currentStory.content}</p>
                       </div>
                       <div className="card-footer">
@@ -94,23 +102,33 @@ import React, { useState, useEffect } from 'react';
                           Read more →
                         </a>
                       </div>
+                      <div className="swipe-buttons-container">
+                        <button
+                          className="swipe-button"
+                          onClick={() => handleSwipe('right')}
+                          disabled={currentIndex === 0}
+                        >
+                          ←
+                        </button>
+                        <button
+                          className="swipe-button"
+                          onClick={() => handleSwipe('left')}
+                          disabled={currentIndex === stories.length - 1}
+                        >
+                          →
+                        </button>
+                      </div>
                     </div>
                     <div className="image-container">
                       <img
                         src={currentStory.image}
                         alt={currentStory.title}
+                        className="object-top"
                         onError={(e) => {
                           e.target.src = getRandomPlaceholder();
                         }}
                       />
                     </div>
-                    <button
-                      className="swipe-button right"
-                      onClick={() => handleSwipe('left')}
-                      disabled={currentIndex === stories.length - 1}
-                    >
-                      →
-                    </button>
                   </div>
                 ) : (
                   <div className="text-center text-gray-600">No stories available</div>

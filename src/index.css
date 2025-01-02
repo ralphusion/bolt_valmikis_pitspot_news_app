@@ -11,7 +11,7 @@
 
       .image-container {
         @apply w-1/2 relative overflow-hidden;
-        height: 500px;
+        height: 100%;
       }
 
       .image-container img {
@@ -38,23 +38,23 @@
       }
 
       .card-footer {
-        @apply mt-auto flex justify-between items-center text-sm text-gray-500;
+        @apply mt-auto flex justify-between items-center text-sm text-gray-500 mb-4;
+      }
+
+      .card-meta {
+        @apply text-sm text-gray-500 mb-4;
       }
 
       .read-more {
         @apply text-blue-600 font-semibold hover:underline transition-all;
       }
 
+      .swipe-buttons-container {
+        @apply flex gap-4 justify-center mt-6;
+      }
+
       .swipe-button {
-        @apply absolute top-1/2 -translate-y-1/2 bg-white rounded-full w-12 h-12 shadow-lg flex items-center justify-center text-xl text-gray-700 hover:bg-gray-50 transition-all z-10;
-      }
-
-      .swipe-button.left {
-        @apply left-4;
-      }
-
-      .swipe-button.right {
-        @apply right-4;
+        @apply bg-white rounded-full w-12 h-12 shadow-lg flex items-center justify-center text-xl text-gray-700 hover:bg-gray-50 transition-all;
       }
 
       .swipe-button:disabled {
@@ -69,7 +69,7 @@
 
       .skeleton-image {
         @apply w-1/2 bg-gray-200;
-        height: 500px;
+        height: 100%;
       }
 
       .skeleton-content {
