@@ -1,0 +1,103 @@
+@tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer components {
+      .card {
+        @apply bg-white rounded-xl shadow-lg overflow-hidden flex relative;
+        max-width: 800px;
+        min-height: 500px;
+      }
+
+      .image-container {
+        @apply w-1/2 relative overflow-hidden;
+        height: 500px;
+      }
+
+      .image-container img {
+        @apply w-full h-full object-cover absolute;
+        animation: pan 30s linear infinite;
+      }
+
+      @keyframes pan {
+        0% { transform: scale(1.1) translateX(0); }
+        50% { transform: scale(1.1) translateX(-10%); }
+        100% { transform: scale(1.1) translateX(0); }
+      }
+
+      .content-container {
+        @apply w-1/2 p-8 flex flex-col;
+      }
+
+      .card-content h2 {
+        @apply text-3xl font-serif font-bold mb-6 text-gray-900 leading-tight;
+      }
+
+      .card-content p {
+        @apply text-lg text-gray-700 leading-relaxed mb-8;
+      }
+
+      .card-footer {
+        @apply mt-auto flex justify-between items-center text-sm text-gray-500;
+      }
+
+      .read-more {
+        @apply text-blue-600 font-semibold hover:underline transition-all;
+      }
+
+      .swipe-button {
+        @apply absolute top-1/2 -translate-y-1/2 bg-white rounded-full w-12 h-12 shadow-lg flex items-center justify-center text-xl text-gray-700 hover:bg-gray-50 transition-all z-10;
+      }
+
+      .swipe-button.left {
+        @apply left-4;
+      }
+
+      .swipe-button.right {
+        @apply right-4;
+      }
+
+      .swipe-button:disabled {
+        @apply opacity-50 cursor-not-allowed;
+      }
+
+      .skeleton {
+        @apply bg-white rounded-xl shadow-lg overflow-hidden flex;
+        max-width: 800px;
+        min-height: 500px;
+      }
+
+      .skeleton-image {
+        @apply w-1/2 bg-gray-200;
+        height: 500px;
+      }
+
+      .skeleton-content {
+        @apply w-1/2 p-8;
+      }
+
+      .skeleton-title {
+        @apply h-8 bg-gray-200 rounded mb-6;
+        width: 80%;
+      }
+
+      .skeleton-text {
+        @apply h-4 bg-gray-200 rounded mb-3;
+        width: 90%;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .skeleton-image,
+      .skeleton-title,
+      .skeleton-text {
+        animation: pulse 1.5s infinite;
+      }
+    }
