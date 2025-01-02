@@ -60,15 +60,27 @@ import React, { useState, useEffect } from 'react';
         <div className="min-h-screen bg-gray-50">
           <header className="py-8">
             <div className="max-w-7xl mx-auto px-4">
-              <h1 className="text-4xl font-serif font-bold text-center text-gray-900">
-                Valmiki's Pitstop
-              </h1>
-              <p className="text-center text-gray-600 mt-2">
-                Your daily pitstop for Formula 1 news
-              </p>
+              <div className="title-card">
+                <div className="flex items-center justify-center gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12 text-f1-red"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-13h-2v4H7v2h4v4h2v-4h4v-2h-4V7z" />
+                  </svg>
+                  <h1 className="text-4xl font-serif font-bold text-gray-900">
+                    Valmiki's Pitstop
+                  </h1>
+                </div>
+                <p className="text-center text-gray-600 mt-2">
+                  Your daily pitstop for Formula 1 news
+                </p>
+              </div>
             </div>
           </header>
-          <main className="py-12">
+          <main className="py-6">
             <div className="max-w-7xl mx-auto px-4">
               <div className="flex justify-center">
                 {loading ? (

@@ -3,6 +3,10 @@
     @tailwind utilities;
 
     @layer components {
+      .title-card {
+        @apply bg-gray-50 rounded-xl shadow-lg p-6 mb-4;
+      }
+
       .card {
         @apply bg-white rounded-xl shadow-lg overflow-hidden flex relative;
         max-width: 800px;
